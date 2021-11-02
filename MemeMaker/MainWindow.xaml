@@ -12,6 +12,9 @@
         MinWidth="730"
         Icon="smile.ico">
     <Window.Resources>
+        <local:ActivarBorderConverter x:Key="ConvertidorBorde">
+            
+        </local:ActivarBorderConverter>
         <Style TargetType="TextBlock"
                x:Key="etiquetaCampo">
             <Setter Property="Margin"
@@ -119,11 +122,15 @@
                           Margin="0,10,0,0"
                           IsChecked="True"></CheckBox>
             </Grid>
-            <Border Background="#FFF3D2D2"
+            <Border Width="{Binding ElementName=anchoSlider, Path=Value}"
+                    Height="{Binding ElementName=altoSlider, Path=Value}"
+                    BorderThickness="{Binding ElementName=bordeCheckBox, Path=IsChecked, Converter={StaticResource ConvertidorBorde}}"
+                    Background="#FFF3D2D2"
                     BorderBrush="Black"
                     Margin="10">
                 <Grid>
-                    <Image Stretch="Fill" />
+                    <Image Stretch="Fill" 
+                           Source="{Binding ElementName=imagenTextBox, Path=Text}"/>
                     <TextBlock Style="{StaticResource textoMeme}"
                                VerticalAlignment="Top"></TextBlock>
                     <TextBlock Style="{StaticResource textoMeme}"
